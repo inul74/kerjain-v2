@@ -22,7 +22,12 @@ const Header = () => {
           <li>Tidak ada batasan peningkatan per tugas</li>
         </ul>
         <div className="flex w-full max-w-sm items-center space-x-2 mt-5">
-          <Input type="email" placeholder="email" />
+          <Input
+            type="email"
+            name="email"
+            placeholder="email"
+            autoComplete="email"
+          />
           <Button type="submit" className="bg-blue-700 text-white">
             Daftar - gratis!
           </Button>
