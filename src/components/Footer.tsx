@@ -6,8 +6,11 @@ const Footer = () => {
       <footer>
         <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
           <span className="flex text-sm text-gray-500 sm:text-center">
-            © 2024<li className="hover:underline font-medium">kerjaIn</li>. All
-            Rights Reserved.
+            © 2024
+            <li className="hover:underline font-medium">
+              kerja<span className="text-[#07959c]">In</span>
+            </li>
+            . All Rights Reserved.
           </span>
           <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 sm:mt-0">
             <li className="hover:underline me-4 md:me-6">About</li>
