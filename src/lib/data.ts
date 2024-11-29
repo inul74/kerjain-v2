@@ -19,7 +19,7 @@ export const productiveList = [
 export const workflowList = [
   {
     title: "Project management",
-    desc: "Jaga tugas tetap teratur, tenggat waktu tetap sesuai rencana, dan anggota tim tetap selaras dengan apa yang di kerjaIn.",
+    desc: "Jaga tugas tetap teratur, tenggat waktu tetap sesuai rencana, dan anggota tim tetap selaras dengan apa yang perlu dilakukan di kerjaIn.",
     img: "/workflow_1.png",
     color: "bg-[#ff7452]",
   },
@@ -31,13 +31,13 @@ export const workflowList = [
   },
   {
     title: "Onboarding",
-    desc: "Bergabung dengan perusahaan atau proyek baru menjadi sangat mudah dengan tata letak visual kerjaIn yang menampilkan daftar tugas, sumber daya, dan pelacakan kemajuan.",
+    desc: "Bergabung dengan tim baru menjadi sangat mudah dengan tata letak visual kerjaIn yang menampilkan daftar tugas, sumber daya, dan pelacakan kemajuan.",
     img: "/workflow_3.png",
     color: "bg-[#57d9a3]",
   },
   {
     title: "Task management",
-    desc: "Gunakan kerjaIn untuk melacak, mengelola, menyelesaikan, dan menggabungkan tugas-tugas seperti potongan puzzle, dan buat proyek tim Anda menjadi sukses yang kohesif setiap saat.",
+    desc: "Gunakan kerjaIn untuk melacak, mengelola, menyelesaikan, dan menggabungkan tugas-tugas seperti potongan puzzle menjadi satu bagian.",
     img: "/workflow_4.png",
     color: "bg-[#ffc400]",
   },
