@@ -1,12 +1,17 @@
 import React from "react";
-import CreateOrgForm from "./CreateOrgForm";
+
 import OrgList from "./OrgList";
+import CreateOrgForm from "./CreateOrgForm";
+
+import { prismaDB } from "@/providers/connection";
 
 const Sidebar = async () => {
+  const getOrganizations = await prismaDB.organization.findMany();
+
   return (
     <div>
       <CreateOrgForm />
-      <OrgList />
+      <OrgList getOrganizations={getOrganizations} />
     </div>
   );
 };
