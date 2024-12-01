@@ -19,7 +19,7 @@ const Productivity = () => {
         informasi lebih lanjut.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-[1.2fr_2fr] gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_2fr] gap-6">
         <div className="flex flex-col justify-between py-2 leading-normal">
           {productiveList?.map((item, index) => (
             <div
