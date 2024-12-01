@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 
@@ -28,9 +29,14 @@ const Header = () => {
             placeholder="email"
             autoComplete="email"
           />
-          <Button type="submit" className="bg-blue-700 text-white">
-            Daftar - gratis!
-          </Button>
+          <Link
+            href="/login"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            <Button type="submit" className="bg-blue-700 text-white">
+              Daftar - gratis!
+            </Button>
+          </Link>
         </div>
       </div>
       <div>
