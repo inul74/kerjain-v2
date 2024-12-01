@@ -24,7 +24,7 @@ const Navbar = () => {
             Log in
           </Link>
         ) : (
-          <div className="flex gap-4">
+          <div className="flex gap-6">
             <Link
               href="/organizations"
               className="text-sm font-semibold leading-6 text-gray-900"
@@ -36,7 +36,7 @@ const Navbar = () => {
                 event.preventDefault();
                 signOut();
               }}
-              className="font-semibold text-sm cursor-pointer"
+              className="font-semibold text-sm leading-6 cursor-pointer"
             >
               Logout
             </div>
