@@ -1,11 +1,7 @@
 "use client";
 
-import { X } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { Plus, X } from "lucide-react";
 import React, { useEffect, useState, ElementRef, useRef } from "react";
-
-import { Card, User } from "@/interfaces";
-import { addCardMember, getWithoutCardMembers } from "@/services/card";
 
 import { Button } from "./ui/button";
 import {
@@ -15,53 +11,48 @@ import {
   PopoverClose,
 } from "./ui/popover";
 
-interface CardProps {
-  card: Card;
-  boardId: string;
-}
-const AddCardMember = ({ card, boardId }: CardProps) => {
-  const router = useRouter();
-  const closeRef = useRef<ElementRef<"button">>(null);
+import { User } from "@/interfaces";
+import { getWithoutOrgMembers, updateOrgMember } from "@/services/organization";
+
+const AddMembers = ({ organization }: { organization: any }) => {
   const [members, setMembers] = useState<any>([]);
+  const closeRef = useRef<ElementRef<"button">>(null);
 
   const getMembers = async () => {
-    const getUsers = await getWithoutCardMembers({
-      boardId,
-      cardId: card.id,
+    const getUsers = await getWithoutOrgMembers({
+      organizationId: organization?.id,
     });
     setMembers(getUsers?.result);
   };
 
   useEffect(() => {
-    if (card) getMembers();
+    if (organization) getMembers();
   }, []);
 
   const handleSubmit = async (user: any) => {
-    user?.cardIds?.push(card?.id);
-    card?.userIds?.push(user?.id);
-    await addCardMember({
-      user,
-      card,
+    user?.orgIds?.push(organization?.id);
+    organization?.userIds?.push(user?.id);
+    await updateOrgMember({
+      id: user.id,
+      organizationId: organization.id,
+      orgIds: user?.orgIds,
+      userIds: organization?.userIds,
     });
     setMembers(members?.filter((item: User) => item?.id != user?.id));
-    router.refresh();
   };
 
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button
-          className="w-full bg-gray-200 hover:bg-gray-200 text-gray-700"
-          size="sm"
-        >
-          Members
+        <Button className="bg-white/80 text-black hover:bg-white/50 ml-auto cursor-pointer">
+          <Plus className="h-4 w-4" />
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        align="start"
-        className="w-80 pt-3 z-50 bg-white"
+        align="end"
+        className="w-80 pt-3 z-50 bg-white/80"
         side="bottom"
-        sideOffset={18}
+        sideOffset={-100}
       >
         <div className="text-sm font-medium text-center text-neutral-600 pb-4">
           Add Member
@@ -98,4 +89,4 @@ const AddCardMember = ({ card, boardId }: CardProps) => {
   );
 };
 
-export default AddCardMember;
+export default AddMembers;
