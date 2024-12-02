@@ -1,14 +1,15 @@
 "use client";
 
-import React from "react";
 import { toast } from "sonner";
-import { Plus } from "lucide-react";
+import { Plus, X } from "lucide-react";
 import { useRouter } from "next/navigation";
+import React, { ElementRef, useRef } from "react";
 
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
+  PopoverClose,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { createOrganization } from "@/services/organization";
@@ -19,6 +20,7 @@ import { FormPicker } from "./FormPicker";
 
 const CreateOrgForm = () => {
   const router = useRouter();
+  const closeRef = useRef<ElementRef<"button">>(null);
 
   const handleSubmit = async (formData: FormData) => {
     try {
@@ -64,6 +66,14 @@ const CreateOrgForm = () => {
               <FormSubmit className="w-full mt-2">Create</FormSubmit>
             </div>
           </form>
+          <PopoverClose ref={closeRef} asChild>
+            <Button
+              className="h-auto w-auto p-2 absolute top-2 right-2 text-neutral-600"
+              variant="ghost"
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </PopoverClose>
         </PopoverContent>
       </Popover>
     </div>

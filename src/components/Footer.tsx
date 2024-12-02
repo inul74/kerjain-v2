@@ -1,15 +1,16 @@
 import React from "react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
     <div>
       <footer>
-        <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+        <div className="w-full mx-auto max-w-screen-xl p-3 md:flex md:items-center md:justify-between">
           <span className="flex text-sm text-gray-500 sm:text-center">
             © 2024💖
-            <p className="hover:underline font-medium">
+            <Link href="/" className="hover:underline font-medium">
               kerja<span className="text-[#07959c]">In</span>
-            </p>
+            </Link>
             . All Rights Reserved.
           </span>
           <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 sm:mt-0">
