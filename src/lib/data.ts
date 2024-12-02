@@ -25,7 +25,7 @@ export const workflowList = [
   },
   {
     title: "Meetings",
-    desc: "Memberdayakan rapat tim Anda agar lebih produktif, konsisten, dan berani kami nyatakan dengan satu kata “menyenangkan”",
+    desc: "Memberdayakan rapat tim Anda agar lebih produktif, konsisten, dan berani kami nyatakan kepuasan tim dengan satu kata “menyenangkan”",
     img: "/workflow_2.png",
     color: "bg-[#2684ff]",
   },
