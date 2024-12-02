@@ -13,6 +13,7 @@ export const createAudLog = async (props: CreateAudLog) => {
         error: "user not found",
       };
     }
+
     const user: any = await prismaDB.user.findUnique({
       where: { email: session.user.email },
     });
@@ -30,7 +31,7 @@ export const createAudLog = async (props: CreateAudLog) => {
       },
     });
 
-    return { result: audit };
+    return audit;
   } catch (error) {
     console.log("audit error", error);
   }

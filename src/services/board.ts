@@ -1,12 +1,13 @@
 "use server";
 
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
+
+import { createAudLog } from "./audit";
+import { Board, User } from "@/interfaces";
 import { getAuthSession } from "@/lib/auth";
 import { prismaDB } from "@/providers/connection";
-import { createAudLog } from "./audit";
 import { ACTION, TABLE_TYPE } from "@prisma/client";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
-import { Board, User } from "@/interfaces";
 
 export const createBoard = async (data: {
   title: string;
@@ -19,8 +20,8 @@ export const createBoard = async (data: {
       error: "user not found",
     };
   }
-  const { title, image, orgId } = data;
 
+  const { title, image, orgId } = data;
   let board;
   try {
     board = await prismaDB.board.create({
@@ -42,6 +43,7 @@ export const createBoard = async (data: {
       error: "failed to create",
     };
   }
+
   revalidatePath("/");
   return { result: board };
 };
@@ -55,12 +57,12 @@ export const deleteBoard = async ({
   orgId: string;
 }) => {
   const session = await getAuthSession();
-  console.log(session);
   if (!session) {
     return {
       error: "user not found",
     };
   }
+
   let board;
   try {
     board = await prismaDB.board.delete({ where: { id } });
@@ -83,7 +85,6 @@ export const deleteBoard = async ({
 };
 
 // get member without current board
-
 export const getWithoutBoardMembers = async (data: { board: any }) => {
   const session = await getAuthSession();
   if (!session) {
@@ -119,13 +120,14 @@ export const getWithoutBoardMembers = async (data: { board: any }) => {
       error: "board id not exist",
     };
   }
+
   revalidatePath(`/board/${board.id}`);
   return { result: users };
 };
 
-// add memeber in board
+// add member in board
 export const addMemberInBoard = async (data: { user: User; board: Board }) => {
-  const session = getAuthSession();
+  const session = await getAuthSession();
 
   if (!session) {
     return {
@@ -155,6 +157,7 @@ export const addMemberInBoard = async (data: { user: User; board: Board }) => {
       error: "user already exist",
     };
   }
+
   revalidatePath(`/board/${board.id}`);
   return { result: { updateUser, updateBoard } };
 };
