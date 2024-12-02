@@ -1,16 +1,40 @@
-import React from "react";
+"use client";
+
+import { useFormStatus } from "react-dom";
 
 import { cn } from "@/lib/utils";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 
-interface SubmitProps {
+interface FormSubmitProps {
   children: React.ReactNode;
+  disabled?: boolean;
   className?: string;
-  variant?: any;
+  variant?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link"
+    | "primary";
 }
-const FormSubmit = ({ children, className, variant }: SubmitProps) => {
+
+const FormSubmit = ({
+  children,
+  disabled,
+  className,
+  variant = "primary",
+}: FormSubmitProps) => {
+  const { pending } = useFormStatus();
+
   return (
-    <Button className={cn(className)} variant={variant} type="submit" size="sm">
+    <Button
+      disabled={pending || disabled}
+      type="submit"
+      variant={variant}
+      size="sm"
+      className={cn(className)}
+    >
       {children}
     </Button>
   );

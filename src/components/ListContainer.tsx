@@ -1,13 +1,27 @@
 "use client";
 
-import { List } from "@/interfaces";
+import dynamic from "next/dynamic";
 import React, { useEffect, useState } from "react";
-import { DragDropContext, Droppable } from "@hello-pangea/dnd";
+
+const DragDropContext = dynamic(
+  () => import("@hello-pangea/dnd").then((mod) => mod.DragDropContext),
+  {
+    ssr: false,
+  }
+);
+
+const Droppable = dynamic(
+  () => import("@hello-pangea/dnd").then((mod) => mod.Droppable),
+  {
+    ssr: false,
+  }
+);
+
+import { List } from "@/interfaces";
+import { reorderList } from "@/services/list";
 
 import ListItem from "./ListItem";
 import CreateList from "./CreateList";
-
-import { reorderList } from "@/services/list";
 
 interface ListProps {
   boardId: string;
