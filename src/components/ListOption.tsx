@@ -55,7 +55,7 @@ const ListOption = ({ list }: { list: List }) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button className="" variant="ghost">
+        <Button variant="ghost" size="sm">
           <MoreHorizontal className="h-4 w-4" />
         </Button>
       </PopoverTrigger>
@@ -84,7 +84,7 @@ const ListOption = ({ list }: { list: List }) => {
             className="h-auto w-auto p-2 absolute top-2 right-2 text-neutral-600"
             variant="ghost"
           >
-            <X className="h-4 w-4" />
+            <X className="h-5 w-5" />
           </Button>
         </PopoverClose>
       </PopoverContent>

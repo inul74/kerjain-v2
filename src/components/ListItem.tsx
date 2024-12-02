@@ -35,7 +35,7 @@ const ListItem = ({ list, index }: { list: List; index: number }) => {
         >
           <div
             {...provided.dragHandleProps}
-            className="w-full rounded-md bg-white/80 shadow-md pb-2 mt-6"
+            className="w-full rounded-md bg-white/80 shadow-md pb-2 my-6"
           >
             <ListHeader list={list} />
             <Droppable droppableId={list.id} type="card">
